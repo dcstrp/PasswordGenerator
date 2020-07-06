@@ -4,17 +4,18 @@ import java.util.Random;
 
 public class PasswordGenerator {
 
-
     private char[] password;
     private int passwordLength;
+    private static final int DEFAULT_PASSWORD_LENGTH = 12;
 
     public PasswordGenerator(int passwordLength) {
-        this.passwordLength = passwordLength == 0 ? 8 : passwordLength < 0 ? Math.abs(passwordLength) : passwordLength;
+        this.passwordLength = passwordLength == 0 ? DEFAULT_PASSWORD_LENGTH : passwordLength < 0 ? Math.abs(passwordLength) : passwordLength;
         this.password = new char[this.passwordLength];
     }
 
     /**
      * Generates a new password
+     *
      * @return The generated password
      */
     public String createPassword() {
