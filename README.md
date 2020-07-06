@@ -11,6 +11,7 @@ I got sick of doing that and given that I'm currently trying to get the hang of 
 - I wanted to start a small track record of my progress in app development so that in a few years, I can look back and see how far I've come.
 
 ## What's done and what works
+![The UI](https://github.com/dcstrp/PasswordGenerator/blob/master/readmeImage/pwgen.png)
 
 It's possible to create the password by selecting a password length from the respective combo box (default length => 12) and then clicking the Generate button. To spare the trouble of having to copy/paste the password from the text area it then appears in, there's a copy-to-clipboard button that stores the password in the clipboard upon clicking.
 
