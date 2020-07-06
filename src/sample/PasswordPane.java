@@ -28,7 +28,6 @@ public class PasswordPane extends BorderPane {
         initialize();
     }
 
-
     private void initialize() {
 
         VBox vboxPassword = createPasswordVBox();
@@ -64,7 +63,6 @@ public class PasswordPane extends BorderPane {
 
     private VBox createPasswordLengthVBox() {
 
-
         Label lengthsLbl = new Label("Password length");
         lengthsLbl.setFont(FONT);
 
@@ -76,7 +74,6 @@ public class PasswordPane extends BorderPane {
 
         //create the aforementioned combobox, binding the previously created collection to it
         passwordLengthsComboBox = new ComboBox<>(listOfLengths);
-
         //force the first combobox item to be selected, this avoids a potential NPE upon clicking the generate button
         passwordLengthsComboBox.getSelectionModel().selectFirst();
 
@@ -97,9 +94,7 @@ public class PasswordPane extends BorderPane {
         generatePasswordButton.setOnAction(e ->
         {
             int passwordLength = passwordLengthsComboBox.getSelectionModel().getSelectedItem();
-            PasswordGenerator passwordGenerator = new PasswordGenerator(passwordLength);
-            passwordTextArea.setText(passwordGenerator.createPassword());
-
+            passwordTextArea.setText(PasswordGenerator.getPassword(passwordLength));
         });
 
         //create the copy to clipboard button and create an animation that changes its text in order to provide visual feedback
@@ -149,5 +144,4 @@ public class PasswordPane extends BorderPane {
 
         return vBox;
     }
-
 }
