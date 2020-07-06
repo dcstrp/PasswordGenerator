@@ -4,28 +4,36 @@ import java.util.Random;
 
 public class PasswordGenerator {
 
-    private char[] password;
-    private int passwordLength;
     private static final int DEFAULT_PASSWORD_LENGTH = 12;
 
-    public PasswordGenerator(int passwordLength) {
-        this.passwordLength = passwordLength == 0 ? DEFAULT_PASSWORD_LENGTH : passwordLength < 0 ? Math.abs(passwordLength) : passwordLength;
-        this.password = new char[this.passwordLength];
-    }
-
     /**
-     * Generates a new password
+     * Creates a new password
      *
-     * @return The generated password
+     * @param pwordLength The length of the password
+     * @return The created password
      */
-    public String createPassword() {
+    private static String createPassword(int pwordLength) {
 
-        char[] characters = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789^$*.[]{}()?-\"!@#%&/\\,><':;|_~`").toCharArray();
         Random rand = new Random();
-        for (int i = 0; i < this.passwordLength; i++) {
+        int passwordLength = pwordLength == 0 ? DEFAULT_PASSWORD_LENGTH : pwordLength < 0 ? Math.abs(pwordLength) : pwordLength;
+        char[] password = new char[passwordLength];
+        char[] characters = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789^$*.[]{}()?-\"!@#%&/\\,><':;|_~`").toCharArray();
+
+        for (int i = 0; i < passwordLength; i++) {
             password[i] = characters[rand.nextInt(characters.length)];
         }
         return new String(password);
     }
 
+    /**
+     * Obtains a created password
+     *
+     * @param pwordLength The length of the password
+     * @return The password
+     */
+    public static String getPassword(int pwordLength) {
+        return createPassword(pwordLength);
+    }
 }
+
+
