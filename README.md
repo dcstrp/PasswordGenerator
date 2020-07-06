@@ -19,7 +19,9 @@ I initially thought about automatically storing the password on the clipboard up
 
 ## Things to note
 
-The app's current state is fairly rudimentar - it generates a password anywhere between [12,256] charatchers long and right now assumes that numbers/Uppercase letters/lowercase letters/other symbols are meant to be used, which means that the user has no choice in the matter. Given that this might be restrictive and less than optimal in terms of user choices, I'd like to rewrite the underlying generator class in the future so as to allow the user to decide what charatchers they'd like on their password. Furthermore, owing to the fact that no strength checks were implemented, it was decided that 12 would be the lowest length possible to make sure that the passwords have the bare minimum safety.
+The app's current state is fairly rudimentar, even if straightforward in its use  - it generates a password where its length lies anywhere in the interval: 12 ⩽ length ⩽ 256. 
+
+Right now it assumes that numbers/Uppercase letters/lowercase letters/other symbols are meant to be used, which means that the user has no choice in the matter. Given that this might be restrictive and less than optimal in terms of user choices, I'd like to rewrite the underlying generator class in the future so as to allow the user to decide what charatchers they'd like on their password. Furthermore, owing to the fact that no strength checks were implemented, it was decided that 12 would be the lowest length possible to make sure that the passwords have the bare minimum safety.
 
 ## Future improvements
 
