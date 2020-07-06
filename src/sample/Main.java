@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Password Generator");
         primaryStage.setScene(new Scene(new PasswordPane(), 400, 330));
         primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/image/testico.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));
         primaryStage.show();
     }
 
