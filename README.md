@@ -13,7 +13,7 @@ I got sick of doing that and given that I'm currently trying to get the hang of 
 ## What's done and what works
 ![The UI](https://github.com/dcstrp/PasswordGenerator/blob/master/readmeImage/pwgen.png)
 
-It's possible to create the password by selecting a password length from the respective combo box (default length of 12) and then clicking the Generate button. To spare the trouble of having to copy/paste the password from the text area it then appears in, there's a copy-to-clipboard button that stores the password in the clipboard upon clicking.
+It's possible to create the password by selecting a password length from the respective combo box (default length of 12) and then clicking the Generate button. To spare the trouble of having to copy/paste the password from the text area it then appears in, there's a copy-to-clipboard button that stores the password in the clipboard upon clicking. The clear button clears the text area.
 
 I initially thought about automatically storing the password on the clipboard upon its creation but decided against it purely because the user might want to choose when the password gets "copied". So, instead of forcing that behaviour upon the user, I decided to give them the choice by having said behaviour behind a button. In the future, perhaps I'll add an option to automatically copy the password to the clipboard for those that would rather have this behaviour happen instead.
 
