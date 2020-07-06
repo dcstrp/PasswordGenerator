@@ -14,13 +14,13 @@ public class PasswordGenerator {
      */
     private static String createPassword(int pwordLength) {
 
-        Random rand = new Random();
+        Random rng = new Random();
         int passwordLength = pwordLength == 0 ? DEFAULT_PASSWORD_LENGTH : pwordLength < 0 ? Math.abs(pwordLength) : pwordLength;
         char[] password = new char[passwordLength];
         char[] characters = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789^$*.[]{}()?-\"!@#%&/\\,><':;|_~`").toCharArray();
 
         for (int i = 0; i < passwordLength; i++) {
-            password[i] = characters[rand.nextInt(characters.length)];
+            password[i] = characters[rng.nextInt(characters.length)];
         }
         return new String(password);
     }

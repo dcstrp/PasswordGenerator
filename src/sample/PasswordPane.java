@@ -30,15 +30,15 @@ public class PasswordPane extends BorderPane {
 
     private void initialize() {
 
-        VBox vboxPassword = createPasswordVBox();
+        VBox vboxPassword = createPasswordDisplayVBox();
         VBox vboxButtons = createButtonsVBox();
         VBox vboxPWLength = createPasswordLengthVBox();
-        VBox vboxDisplay = new VBox(vboxPassword, vboxButtons, vboxPWLength);
+        VBox mainVBox = new VBox(vboxPassword, vboxButtons, vboxPWLength);
 
-        this.setCenter(vboxDisplay);
+        this.setCenter(mainVBox);
     }
 
-    private VBox createPasswordVBox() {
+    private VBox createPasswordDisplayVBox() {
 
         //create the controls
         Label passwordLbl = new Label("Password");
@@ -51,7 +51,7 @@ public class PasswordPane extends BorderPane {
         passwordTextArea.setMaxSize(200, 20);
         passwordTextArea.setFont(FONT);
 
-        //create and configure the vbox to be returned while adding the aforementioned controls
+        //create and configure the vbox to be returned
 
         VBox vbox = new VBox(passwordLbl, passwordTextArea);
         vbox.setSpacing(8);
@@ -66,18 +66,19 @@ public class PasswordPane extends BorderPane {
         Label lengthsLbl = new Label("Password length");
         lengthsLbl.setFont(FONT);
 
-        //Use a collection in order to fill the combobox with several numbers representing password lengths
+        //Use a collection in order to fill the combobox with several numbers representing various password lengths
         ObservableList<Integer> listOfLengths = FXCollections.observableArrayList();
         for (int i = 12; i <= 256; i++) {
             listOfLengths.add(i);
         }
 
-        //create the aforementioned combobox, binding the previously created collection to it
+        //create the aforementioned combobox, linking the previously created collection to it
         passwordLengthsComboBox = new ComboBox<>(listOfLengths);
+
         //force the first combobox item to be selected, this avoids a potential NPE upon clicking the generate button
         passwordLengthsComboBox.getSelectionModel().selectFirst();
 
-        //create and configure the vbox to be returned while adding the aforementioned controls
+        //create and configure the vbox to be returned
         VBox vbox = new VBox(lengthsLbl, passwordLengthsComboBox);
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(15, 0, 0, 0));
@@ -129,14 +130,14 @@ public class PasswordPane extends BorderPane {
 
         clearPasswordButton.setOnAction(e -> passwordTextArea.setText(""));
 
-        //Create an array of buttons to format them all at once and thus, avoiding the need of writing several lines of repeated code
+        //Create an array of buttons to format them all at once, thus avoiding the need to write several lines of repeated code
         Button[] buttons = {generatePasswordButton, clearPasswordButton, copyToClipboardButton};
 
         for (Button button : buttons) {
             button.setPrefSize(200, 20);
             button.setFont(FONT);
         }
-        //create and configure the vbox to be returned while adding the aforementioned controls
+        //create and configure the vbox to be returned
         VBox vBox = new VBox(generatePasswordButton, copyToClipboardButton, clearPasswordButton);
         vBox.setSpacing(20);
         vBox.setPadding(new Insets(5, 0, 0, 0));
