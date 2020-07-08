@@ -30,6 +30,8 @@ public class PasswordPane extends BorderPane {
 
     private void initialize() {
 
+        passwordTextArea = new TextArea("");
+        passwordLengthsComboBox = new ComboBox<>();
         VBox vboxPassword = createPasswordDisplayVBox();
         VBox vboxButtons = createButtonsVBox();
         VBox vboxPWLength = createPasswordLengthVBox();
@@ -40,18 +42,13 @@ public class PasswordPane extends BorderPane {
 
     private VBox createPasswordDisplayVBox() {
 
-        //create the controls
         Label passwordLbl = new Label("Password");
-        passwordTextArea = new TextArea("");
 
-        //configure their display and functionality
         passwordLbl.setFont(FONT);
         passwordTextArea.setEditable(false);
         passwordTextArea.setWrapText(true);
         passwordTextArea.setMaxSize(200, 20);
         passwordTextArea.setFont(FONT);
-
-        //create and configure the vbox to be returned
 
         VBox vbox = new VBox(passwordLbl, passwordTextArea);
         vbox.setSpacing(8);
@@ -71,14 +68,11 @@ public class PasswordPane extends BorderPane {
         for (int i = 12; i <= 256; i++) {
             listOfLengths.add(i);
         }
-
-        //create the aforementioned combobox, linking the previously created collection to it
-        passwordLengthsComboBox = new ComboBox<>(listOfLengths);
-
+        //link the collection to the combobox
+        passwordLengthsComboBox.setItems(listOfLengths);
         //force the first combobox item to be selected, this avoids a potential NPE upon clicking the generate button
         passwordLengthsComboBox.getSelectionModel().selectFirst();
 
-        //create and configure the vbox to be returned
         VBox vbox = new VBox(lengthsLbl, passwordLengthsComboBox);
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(15, 0, 0, 0));
@@ -89,7 +83,6 @@ public class PasswordPane extends BorderPane {
 
     private VBox createButtonsVBox() {
 
-        //create the password generation button, add an event to generate the password
         Button generatePasswordButton = new Button("Generate");
 
         generatePasswordButton.setOnAction(e ->
@@ -115,7 +108,6 @@ public class PasswordPane extends BorderPane {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
 
-        //Create an event to store the generated password on the clipboard. Upon storing, the previously created animation is played
         copyToClipboardButton.setOnAction(e ->
         {
             if (!passwordTextArea.getText().isEmpty()) {
@@ -125,7 +117,6 @@ public class PasswordPane extends BorderPane {
             }
         });
 
-        //Straightforward clear button creation, there isn't much to say about this one
         Button clearPasswordButton = new Button("Clear");
 
         clearPasswordButton.setOnAction(e -> passwordTextArea.setText(""));
@@ -137,7 +128,7 @@ public class PasswordPane extends BorderPane {
             button.setPrefSize(200, 20);
             button.setFont(FONT);
         }
-        //create and configure the vbox to be returned
+        
         VBox vBox = new VBox(generatePasswordButton, copyToClipboardButton, clearPasswordButton);
         vBox.setSpacing(20);
         vBox.setPadding(new Insets(5, 0, 0, 0));
