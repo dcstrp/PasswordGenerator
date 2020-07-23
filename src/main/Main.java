@@ -1,5 +1,6 @@
-package sample;
+package main;
 
+import design.PasswordPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

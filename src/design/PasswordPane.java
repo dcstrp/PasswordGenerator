@@ -1,5 +1,6 @@
-package sample;
+package design;
 
+import functionality.PasswordGenerator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -128,7 +129,7 @@ public class PasswordPane extends BorderPane {
             button.setPrefSize(200, 20);
             button.setFont(FONT);
         }
-        
+
         VBox vBox = new VBox(generatePasswordButton, copyToClipboardButton, clearPasswordButton);
         vBox.setSpacing(20);
         vBox.setPadding(new Insets(5, 0, 0, 0));
